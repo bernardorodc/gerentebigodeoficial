@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-blue: #2563EB;
+  --primary-purple: #7C3AED;
+  --accent-green: #10B981;
+  --accent-red: #EF4444;
+  --bg-light: #FFFFFF;
+  --bg-dark: #1F2937;
+  --text-light: #1F2937;
+  --text-dark: #F3F4F6;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Animações */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradientes */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+}
+
+/* Transições suaves para o dark mode */
+.dark body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Estilos para botões */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-md hover:opacity-90 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300;
+}
+
+/* Efeitos de hover para cards */
+.feature-card {
+  @apply transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Melhorias para mobile */
+@media (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Estilo global para remover o cursor padrão */
+body {
+  cursor: none;
+}
+
+/* Estilos para botões arredondados */
+button, 
+.btn,
+a[href^="#"],
+[class*="rounded-lg"] {
+  border-radius: 9999px !important;
+  padding: 12px 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Manter padding original para botões pequenos ou ícones */
+button.p-2,
+button.p-1,
+.p-2,
+.p-1 {
+  padding: 0.5rem !important;
+}
+
+/* Animação para o efeito de fade das notificações */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+.notification-toast {
+  animation: fadeInOut 5s ease-in-out forwards;
+}
